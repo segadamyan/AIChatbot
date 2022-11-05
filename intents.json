@@ -1,0 +1,22 @@
+{"intents" : [
+  {
+    "tag": "greetings",
+    "patterns": ["hello", "hey", "hi", "good day", "good evening", "good morning"],
+    "responses": ["Hello", "Hi there", "Good day, Nice to meet you"]
+  },
+  {
+    "tag": "age",
+    "patterns": ["how old", "how old are you ?", "age?", "what age", "can i know your age ?"],
+    "responses": ["I am 22", "22 years!"]
+  },
+  {
+    "tag": "name",
+    "patterns": ["what is your name", "your name ?", "who are you ?", "tell me your name", "can you please say your name ?"],
+    "responses": ["My name is SA", "I am SA"]
+  },
+  {
+    "tag": "differential",
+    "patterns": ["what about differential equations", "what about diff ?", "differential ?", "tell me about diff"],
+    "responses": ["In mathematics, a differential equation is an equation that relates one or more unknown functions and their derivatives."]
+  }
+]}
