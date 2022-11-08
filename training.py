@@ -28,7 +28,7 @@ class ChatbotModel:
     def __prepare_sentance(self):
         for intent in self.intents['intents']:
             for pattern in intent['patterns']:
-                word_list = nltk.word_tokenize(pattern)
+                word_list = nltk.word_tokenize(pattern.lower())
                 self.words.extend(word_list)
                 self.documents.append((word_list, intent['tag']))
                 if intent['tag'] not in self.classes:
@@ -63,18 +63,20 @@ class ChatbotModel:
         training = np.array(training)
         train_x = list(training[:, 0])
         train_y = list(training[:, 1])
+        print(train_x)
+        print(train_y)
         return train_x, train_y
 
     def __set_up_model(self, train_x, train_y):
         model = Sequential()
         model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
-        model.add(Dropout(0.5))
+        model.add(Dropout(0.2))
         model.add(Dense(64, activation='relu'))
-        model.add(Dropout(0.5))
+        model.add(Dropout(0.3))
         model.add(Dense(len(train_y[0]), activation='softmax'))
 
         model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
-        hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+        hist = model.fit(np.array(train_x), np.array(train_y), epochs=400, batch_size=5, verbose=1)
         model.save('chatbot.h5', hist)
 
 
