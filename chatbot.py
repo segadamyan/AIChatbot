@@ -1,6 +1,9 @@
 import json
+import os
 import pickle
 import random
+import shutil
+from enum import Enum
 
 import nltk
 import numpy as np
@@ -13,6 +16,17 @@ intents = json.loads(open('intents.json').read())
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
 model = load_model('chatbot.h5')
+previousExtension = ""
+
+
+class Languages(Enum):
+    Python = ("python", "py")
+    JAVA = ("java", "java")
+    CPP = ("cpp", "cpp")
+
+
+def deleteFile(filename):
+    os.remove(filename)
 
 
 def clean_sentence(sentence):
@@ -39,7 +53,6 @@ def predict(sentence):
     res = model.predict(np.array([bow]))[0]
     ERROR_THRESHOLD = 0.2
     result = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
-    print(result)
     result.sort(key=lambda x: x[1], reverse=True)
     return_list = []
     for r in result:
@@ -62,6 +75,23 @@ def get_response(intents_list, intents_json):
 while True:
     message = input("")
     ints = predict(message)
-    print(ints)
     res = get_response(ints, intents)
+    if res.startswith("[code]"):
+
+        res = res[6:]
+        language, filename = res.split(".")
+        extension = ""
+        if language == Languages.Python.value[0]:
+            extension = Languages.Python.value[1]
+        elif language == Languages.JAVA.value[0]:
+            extension = Languages.JAVA.value[1]
+        elif language == Languages.CPP.value[0]:
+            extension = Languages.CPP.value[1]
+        else:
+            extension = "txt"
+        if not previousExtension == "":
+            deleteFile(f"response.{previousExtension}")
+        shutil.copyfile(f'resources/code/{language}/{filename}.{extension}', f'response.{extension}')
+        previousExtension = extension
+
     print(res)

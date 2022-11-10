@@ -251,6 +251,50 @@
         "Oh its time to coffee, let`s drink",
         "Ok, let`s drink"
       ]
+    },
+    {
+      "tag": "python.bubble_sort",
+      "patterns": [
+        "generate bubble sort in python",
+        "bubble sort in python",
+        "bubble sort using python"
+      ],
+      "responses": [
+        "[code]python.bubble_sort"
+      ]
+    },
+    {
+      "tag": "python.selection_sort",
+      "patterns": [
+        "generate selection sort in python",
+        "selection sort in python",
+        "selection sort using python"
+      ],
+      "responses": [
+        "[code]python.selection_sort"
+      ]
+    },
+    {
+      "tag": "java.selection_sort",
+      "patterns": [
+        "generate selection sort in java",
+        "selection sort in java",
+        "selection sort using java"
+      ],
+      "responses": [
+        "[code]java.selection_sort"
+      ]
+    },
+    {
+      "tag": "java.bubble_sort",
+      "patterns": [
+        "generate bubble sort in java",
+        "bubble sort in java",
+        "bubble sort using java"
+      ],
+      "responses": [
+        "[code]java.bubble_sort"
+      ]
     }
   ]
 }
