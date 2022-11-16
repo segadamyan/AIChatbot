@@ -4,6 +4,7 @@ import random
 
 import nltk
 import numpy as np
+from keras import regularizers
 from nltk.stem import WordNetLemmatizer
 from tensorflow.python.keras.layers import Dense, Dropout
 from tensorflow.python.keras.models import Sequential
@@ -69,14 +70,16 @@ class ChatbotModel:
 
     def __set_up_model(self, train_x, train_y):
         model = Sequential()
-        model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
+        model.add(
+            Dense(128, input_shape=(len(train_x[0]),), kernel_regularizer=regularizers.l2(0.001), activation='relu'))
         model.add(Dropout(0.2))
-        model.add(Dense(64, activation='relu'))
+        model.add(Dense(64, kernel_regularizer=regularizers.l2(0.001), activation='relu'), )
         model.add(Dropout(0.3))
         model.add(Dense(len(train_y[0]), activation='softmax'))
 
         model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
-        hist = model.fit(np.array(train_x), np.array(train_y), epochs=400, batch_size=5, verbose=1)
+        hist = model.fit(np.array(train_x), np.array(train_y), epochs=400, batch_size=5, validation_split=0.1,
+                         verbose=1)
         model.save('chatbot.h5', hist)
 
 

@@ -253,9 +253,48 @@
       ]
     },
     {
+      "tag": "ready",
+      "patterns": [
+        "are you ready ?",
+        "ready ?"
+      ],
+      "responses": [
+        "Always!",
+        "Sure! What can I do for you?"
+      ]
+    },
+    {
+      "tag": "talk_to_me",
+      "patterns": [
+        "please talk to me",
+        "lets talk",
+        "talk with me"
+      ],
+      "responses": [
+        "Sure! Let's talk.",
+        "My pleasure."
+      ]
+    },
+    {
+      "tag": "confirmation.cancel",
+      "patterns": [
+        "cancel it",
+        "cancel now!",
+        "cancel"
+      ],
+      "responses": [
+        "Cancelled! Let me know what I should do next.",
+        "Cancelled. Waiting for more commands.",
+        "Cancelled! Just tell me what you'd like me to do next.",
+        "Cancelled. Go on with the commands!"
+      ]
+    },
+    {
       "tag": "python.bubble_sort",
       "patterns": [
         "generate bubble sort in python",
+        "bubble sort in py",
+        "bubblesort using py",
         "bubble sort in python",
         "bubble sort using python"
       ],
@@ -294,6 +333,30 @@
       ],
       "responses": [
         "[code]java.bubble_sort"
+      ]
+    },
+    {
+      "tag": "cpp.selection_sort",
+      "patterns": [
+        "generate selection sort in cpp",
+        "selection sort in c++",
+        "selection sort using cpp",
+        "i need selection sort in c++"
+      ],
+      "responses": [
+        "[code]cpp.selection_sort"
+      ]
+    },
+    {
+      "tag": "cpp.bubble_sort",
+      "patterns": [
+        "generate bubble sort in cpp",
+        "bubble sort in c++",
+        "bubble sort using cpp",
+        "i need bubble sort in c++"
+      ],
+      "responses": [
+        "[code]cpp.bubble_sort"
       ]
     }
   ]

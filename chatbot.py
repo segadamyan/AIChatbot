@@ -62,7 +62,7 @@ def predict(sentence):
 
 def get_response(intents_list, intents_json):
     if len(intents_list) == 0:
-        return "I couldn't understand sorry, please say another way"
+        return "Can you try asking it in a different way?"
     tag = intents_list[0]['intent']
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
@@ -93,5 +93,8 @@ while True:
             deleteFile(f"response.{previousExtension}")
         shutil.copyfile(f'resources/code/{language}/{filename}.{extension}', f'response.{extension}')
         previousExtension = extension
-
+    elif res.startswith("Cancelled"):
+        if not previousExtension == "":
+            deleteFile(f"response.{previousExtension}")
+            previousExtension = ""
     print(res)
