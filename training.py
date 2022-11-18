@@ -1,7 +1,7 @@
 import json
 import pickle
 import random
-
+#https://www.kaggle.com/datasets/elvinagammed/chatbots-intent-recognition-dataset
 import nltk
 import numpy as np
 from keras import regularizers
