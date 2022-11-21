@@ -18,6 +18,24 @@ classes = pickle.load(open('classes.pkl', 'rb'))
 model = load_model('chatbot.h5')
 previousExtension = ""
 
+SORTING_ALGORITHMS = {
+    "insertion_sort": (
+        "Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.",
+        "O(N^2)"),
+    "bubble_sort": (
+        "Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.",
+        "O(N2)"),
+    "selection_sort": (
+        "The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from the unsorted part and putting it at the beginning. ",
+        "O(N2)"),
+    "merge_sort": (
+        "The Merge Sort algorithm is a sorting algorithm that is based on the Divide and Conquer paradigm. In this algorithm, the array is initially divided into two equal halves and then they are combined in a sorted manner.",
+        "O(N log(N))"),
+    "quick_sort": (
+        "Like Merge Sort, QuickSort is a Divide and Conquer algorithm. It picks an element as a pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.",
+        "O(N*logN)")
+}
+
 
 class Languages(Enum):
     Python = ("python", "py")
@@ -42,7 +60,6 @@ def bag_of_word(sentence):
         for i, word in enumerate(words):
             if word == w:
                 bag[i] = 1
-    print(bag)
     return np.array(bag)
 
 
@@ -93,6 +110,7 @@ while True:
             deleteFile(f"response.{previousExtension}")
         shutil.copyfile(f'resources/code/{language}/{filename}.{extension}', f'response.{extension}')
         previousExtension = extension
+        res = SORTING_ALGORITHMS[filename][0] + ' \nComplexity: ' + SORTING_ALGORITHMS[filename][1]
     elif res.startswith("Cancelled"):
         if not previousExtension == "":
             deleteFile(f"response.{previousExtension}")
