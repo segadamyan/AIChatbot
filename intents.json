@@ -463,7 +463,7 @@
         "array data structure"
       ],
       "responses": [
-        "An array is a collection of items stored at contiguous memory locations. The idea is to store multiple items of the same type together. This makes it easier to calculate the position of each element by simply adding an offset to a base value, i.e., the memory location of the first element of the array (generally denoted by the name of the array). Let size of array be n.\nAccessing Time: O(1) [This is possible because elements\n                      are stored at contiguous locations]   \nSearch Time:   O(n) for Sequential Search: \n               O(log n) for Binary Search [If Array is sorted]\nInsertion Time: O(n) [The worst case occurs when insertion \n                     happens at the Beginning of an array and \n                     requires shifting all of the elements]\nDeletion Time: O(n) [The worst case occurs when deletion \n                     happens at the Beginning of an array and \n                     requires shifting all of the elements]"
+        "An array is a collection of items stored at contiguous memory locations.\n The idea is to store multiple items of the same type together.\n This makes it easier to calculate the position of each element\n by simply adding an offset to a base value, i.e., the memory\n location of the first element of the array (generally denoted by the name of the array). Let size of array be n.\nAccessing Time: O(1) [This is possible because elements\n                      are stored at contiguous locations]   \nSearch Time:   O(n) for Sequential Search: \n               O(log n) for Binary Search [If Array is sorted]\nInsertion Time: O(n) [The worst case occurs when insertion \n                     happens at the Beginning of an array and \n                     requires shifting all of the elements]\nDeletion Time: O(n) [The worst case occurs when deletion \n                     happens at the Beginning of an array and \n                     requires shifting all of the elements]"
       ]
     },
     {
@@ -757,11 +757,8 @@
         "Time"
       ],
       "responses": [
-        "One moment",
-        "One sec",
-        "One second"
-      ],
-      "function": "extensions.getTime"
+        "[func].time"
+      ]
     },
     {
       "tag": "Thanks",

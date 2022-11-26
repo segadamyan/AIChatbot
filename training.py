@@ -78,7 +78,7 @@ class ChatbotModel:
         model.add(Dense(len(train_y[0]), activation='softmax'))
 
         model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
-        hist = model.fit(np.array(train_x), np.array(train_y), epochs=400, batch_size=5, validation_split=0.1,
+        hist = model.fit(np.array(train_x), np.array(train_y), epochs=400, batch_size=5, validation_split=0.05,
                          verbose=1)
         model.save('chatbot.h5', hist)
 
